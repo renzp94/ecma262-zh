@@ -71,9 +71,11 @@
 		overflow-x: hidden;
 		text-overflow: ellipsis;
 		white-space: nowrap;
-		background-color: #fff;
 		flex: none;
 		overflow-y: auto;
+	}
+	.aside-footer {
+		border-top: 1px solid var(--c-gray-4);
 	}
 	.menu {
 		margin: 12px 0;
@@ -98,6 +100,7 @@
 		flex: 1;
 		padding: 24px;
 		overflow: auto;
+		background-color: #fff;
 	}
 	.logo {
 		width: 100%;
@@ -105,6 +108,7 @@
 	}
 	.logo-link {
 		display: block;
+		border-bottom: 1px solid var(--c-gray-4);
 	}
 	.github {
 		color: var(--c-gray-5);
