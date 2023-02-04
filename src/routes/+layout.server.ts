@@ -1,8 +1,8 @@
 import { loadMarkdownFiles } from '../utils/markdown'
-import type { PageServerLoad } from './$types'
+import type { PageServerLoad } from './[id]/$types'
 
-export const load:PageServerLoad = (() => {
+export const load:PageServerLoad = (({ params }) => {
 	const files = loadMarkdownFiles()
 
-	return { files }
+	return { files, id: params.id }
 })

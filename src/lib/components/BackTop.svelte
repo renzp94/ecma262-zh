@@ -3,7 +3,8 @@
 	export let bottom = '5rem';
 	export let right = '0.625rem';
 	export let duration = 500;
-	export const target = typeof document !== 'undefined' ? document.documentElement : null;
+	export let target: HTMLElement | undefined =
+		typeof document !== 'undefined' ? document.documentElement : undefined;
 
 	let visible = false;
 	const onScroll = () => {
@@ -11,13 +12,16 @@
 			visible = target?.scrollTop > visibleHeight;
 		}
 	};
+	if (target) {
+		target.onscroll = onScroll;
+	}
 
 	const onScrollToTop = () => {
 		if (target) {
 			top(target, duration);
 		}
 	};
-	const top = (el: HTMLElement, duration: number, top = 0) => {
+	const top = (el: Element, duration: number, top = 0) => {
 		const cubic = (value: number) => Math.pow(value, 3);
 		const easeInOutCubic = (value: number) =>
 			value < 0.5 ? cubic(value * 2) / 2 : 1 - cubic((1 - value) * 2) / 2;
