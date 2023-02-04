@@ -5,7 +5,7 @@
 </script>
 
 <svelte:head>
-	<title>{data.page.title}</title>
+	<title>ECMAScript - {data.page.title}</title>
 </svelte:head>
 
 <section class="md">
