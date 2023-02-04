@@ -58,7 +58,7 @@
 	<BackTop {target} />
 </section>
 
-<style>
+<style lang="less">
 	.layout {
 		display: flex;
 		background-color: var(--bg-base);
@@ -73,29 +73,29 @@
 		white-space: nowrap;
 		flex: none;
 		overflow-y: auto;
-	}
-	.aside-footer {
-		border-top: 1px solid var(--c-gray-4);
+
+		&-footer {
+			border-top: 1px solid var(--c-gray-4);
+		}
 	}
 	.menu {
 		margin: 12px 0;
+		&-text {
+			width: 100%;
+			overflow: hidden;
+			white-space: nowrap;
+			text-overflow: ellipsis;
+			color: var(--c-gray-6);
+			font-weight: 700;
+			&:hover {
+				text-decoration: underline;
+				color: var(--tc-primary);
+			}
+		}
+		&-item--active &-text {
+			color: var(--tc-primary);
+		}
 	}
-	.menu-text {
-		width: 100%;
-		overflow: hidden;
-		white-space: nowrap;
-		text-overflow: ellipsis;
-		color: var(--c-gray-6);
-		font-weight: 700;
-	}
-	.menu-item--active .menu-text {
-		color: var(--tc-primary);
-	}
-	.menu-text:hover {
-		text-decoration: underline;
-		color: var(--tc-primary);
-	}
-
 	.content {
 		flex: 1;
 		padding: 24px;
@@ -105,16 +105,16 @@
 	.logo {
 		width: 100%;
 		object-fit: cover;
-	}
-	.logo-link {
-		display: block;
-		border-bottom: 1px solid var(--c-gray-4);
+		&-link {
+			display: block;
+			border-bottom: 1px solid var(--c-gray-4);
+		}
 	}
 	.github {
 		color: var(--c-gray-5);
-	}
-	.github:hover {
-		color: var(--tc-primary);
+		&:hover {
+			color: var(--tc-primary);
+		}
 	}
 	.icon-github {
 		font-size: 28px;
@@ -123,19 +123,19 @@
 		display: flex;
 		justify-content: space-between;
 		margin-top: 16px;
-	}
-	.footer-link {
-		display: block;
-		color: var(--tc-primary);
-		border: 1px solid var(--c-gray-4);
-		padding: 8px 16px;
-		border-radius: 8px;
-		transition: border 0.3s;
-	}
-	.footer-link:hover {
-		border-color: var(--tc-primary);
-	}
-	.footer-link:hover .footer-link-text {
-		text-decoration: underline;
+		&-link {
+			display: block;
+			color: var(--tc-primary);
+			border: 1px solid var(--c-gray-4);
+			padding: 8px 16px;
+			border-radius: 8px;
+			transition: border 0.3s;
+			&:hover {
+				border-color: var(--tc-primary);
+				.footer-link-text {
+					text-decoration: underline;
+				}
+			}
+		}
 	}
 </style>

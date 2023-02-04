@@ -18,7 +18,7 @@
 	</footer>
 </section>
 
-<style>
+<style lang="less">
 	.footer {
 		color: var(--c-gray-6);
 		font-size: 0.8rem;

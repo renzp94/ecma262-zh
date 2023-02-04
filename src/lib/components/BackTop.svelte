@@ -48,7 +48,7 @@
 	<i class="iconfont icon-back-top" />
 </div>
 
-<style>
+<style lang="less">
 	.back-top {
 		position: fixed;
 		bottom: 5rem;
