@@ -51,5 +51,5 @@ export const loadMarkdownFiles = ():Array<Docs> => {
 }
 
 export function dateFormat(date:string) :string{
-	return Intl.DateTimeFormat('zh-CN', { dateStyle: "full" }).format(new Date(date))
+	return Intl.DateTimeFormat('zh-CN', { dateStyle: "full", timeStyle:"short" }).format(new Date(date))
 }
