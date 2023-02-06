@@ -92,11 +92,13 @@ img {
 /* 块/段落引用 */
 blockquote {
   position: relative;
-  color: var(--tc-secondary);
+  color: var(--tc-regular);
   font-weight: 400;
-  border-left: 2px solid var(--c-primary);
-  padding-left: 1em;
+  border-left: 8px solid var(--c-warning);
+  background-color: var(--c-orange-1);
+  padding: 1em;
   margin: 1em 0;
+  border-radius: 4px;
 }
 
 @media only screen and (max-width: 640px) {
