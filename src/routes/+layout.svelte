@@ -100,9 +100,10 @@
 	}
 	.content {
 		flex: 1;
-		padding: 24px;
+		padding: 16px;
 		overflow: auto;
 		background-color: #fff;
+		scroll-behavior: smooth;
 	}
 	.logo {
 		width: 100%;

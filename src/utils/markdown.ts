@@ -12,6 +12,12 @@ export type Docs = {
 	sort: number
 }
 
+export interface AnchorTree {
+	id:string,
+	title:string,
+	level:number
+}
+
 export const resolve = (filename:string) => path.resolve('docs',filename)
 
 // 加载markdown文件
@@ -22,6 +28,17 @@ export const generateDoc = (markdown: string): string => {
 	const { data, content } = grayMatter(markdown)
 	// Render html from string
 	const renderer = new marked.Renderer()
+	const anchorTree: AnchorTree[] = []
+	renderer.heading = (text:string, level:number) => {
+		const id = text.toLowerCase().replace(/[^\w]+/g, '-')
+		anchorTree.push({
+			title: text,
+			id,
+			level
+		})
+	
+		return `<h${level} id="${id}">${text}</h${level}>`;
+	}
 	
 	const html = marked.parse(content, {
 		renderer,
@@ -29,7 +46,7 @@ export const generateDoc = (markdown: string): string => {
 		highlight: (code: string) => hljs.highlightAuto(code).value,
 	})
 
-	return JSON.stringify({ ...data, html })
+	return JSON.stringify({ ...data, html, anchorTree })
 }
 
 // 读取md文件名
