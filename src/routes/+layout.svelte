@@ -66,6 +66,8 @@
 	}
 	.aside {
 		width: 25%;
+		max-width: 350px;
+		min-width: 200px;
 		height: 100%;
 		padding: 16px;
 		overflow-x: hidden;
