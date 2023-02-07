@@ -300,6 +300,13 @@ blockquote {
   word-break: break-all;
 }
 
+.md p{
+  text-indent: 30px;
+}
+.md p.no-indent {
+  text-indent: 0;
+}
+
 h1,
 h2,
 h3,

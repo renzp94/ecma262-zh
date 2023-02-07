@@ -25,6 +25,7 @@ export const generateDoc = (markdown: string): string => {
 	
 	const html = marked.parse(content, {
 		renderer,
+		breaks: true,
 		highlight: (code: string) => hljs.highlightAuto(code).value,
 	})
 
