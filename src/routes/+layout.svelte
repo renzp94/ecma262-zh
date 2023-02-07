@@ -20,7 +20,7 @@
 			{#each data.files as file (file.id)}
 				<li>
 					<a class={`menu-item ${data.id === file.id ? 'menu-item--active' : ''}`} href={file.id}>
-						<div class="menu-text">{file.title}</div>
+						<div title={file.title} class="menu-text">{file.title}</div>
 					</a>
 				</li>
 			{/each}
@@ -65,7 +65,7 @@
 		height: 100%;
 	}
 	.aside {
-		width: 200px;
+		width: 25%;
 		height: 100%;
 		padding: 16px;
 		overflow-x: hidden;
