@@ -3,42 +3,34 @@
 	import { dateFormat, type AnchorTree } from '../../utils/markdown';
 	import type { PageData } from './$types';
 	export let data: PageData;
+	$: hasAnchorTree = data.page.anchorTree.length > 1;
 
 	let hash: string;
 	let anchorTopList: number[] = [];
-	$: hasAnchorTree = data.page.anchorTree.length > 1;
-	const setHash = (hashchange?: boolean) => {
-		hash = location.hash;
+
+	const scrollToHash = () => {
+		anchorTopList = data.page.anchorTree.map(
+			(item: AnchorTree) => document.getElementById(item.id)?.offsetTop
+		);
 		const index = data.page.anchorTree.findIndex((item: AnchorTree) => `#${item.id}` === hash);
 		const top = anchorTopList[index];
 		const contentEl = document.querySelector('.content');
-		if (!hashchange && top && contentEl) {
+		if (top && contentEl) {
 			contentEl.scrollTop = top;
 		}
 	};
 
+	const onHashchange = () => {
+		hash = location.hash;
+	};
+
 	onMount(() => {
-		anchorTopList = data.page.anchorTree.map(
-			(item: AnchorTree) => document.getElementById(item.id)?.offsetTop
-		);
-		anchorTopList = anchorTopList.map((item: number, index: number) =>
-			index !== anchorTopList.length - 1 ? anchorTopList[index + 1] : item
-		);
-
-		setHash();
-
-		const contentEl = document.querySelector('.content');
-		if (contentEl) {
-			contentEl.addEventListener('scroll', () => {
-				const top = contentEl.scrollTop;
-				const index = anchorTopList.findIndex((item) => item - 20 > top);
-				hash = `#${data.page.anchorTree[index].id}`;
-			});
-		}
+		hash = location.hash;
+		scrollToHash();
 	});
 </script>
 
-<svelte:window on:hashchange={() => setHash(true)} />
+<svelte:window on:hashchange={onHashchange} />
 <svelte:head>
 	<title>ECMAScript - {data.page.title}</title>
 </svelte:head>
@@ -132,5 +124,15 @@
 
 	.author {
 		margin-right: 1.5rem;
+	}
+
+	@media screen and (max-width: 1100px) {
+		.anchor-tree {
+			display: none;
+		}
+
+		.md-content__html {
+			margin-right: 0;
+		}
 	}
 </style>
